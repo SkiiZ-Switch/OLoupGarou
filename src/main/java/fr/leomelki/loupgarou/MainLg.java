@@ -54,6 +54,7 @@ import fr.leomelki.loupgarou.listeners.CancelListener;
 import fr.leomelki.loupgarou.listeners.ChatListener;
 import fr.leomelki.loupgarou.listeners.JoinListener;
 import fr.leomelki.loupgarou.listeners.LoupGarouListener;
+import fr.leomelki.loupgarou.listeners.PlayerInteractListener;
 import fr.leomelki.loupgarou.listeners.VoteListener;
 import lombok.Getter;
 import lombok.Setter;
@@ -62,7 +63,6 @@ public class MainLg extends JavaPlugin{
 	private static MainLg instance;
 	@Getter private final HashMap<String, Constructor<? extends Role>> rolesBuilder = new HashMap<>();
 	@Getter private static String prefix = ""/*"§7[§9Loup-Garou§7] "*/;
-	
 	@Getter @Setter private LGGame currentGame;//Because for now, only one game will be playable on one server (flemme)
 	public static FileConfiguration nicksFile;
 	private List<String> startingMemes;
@@ -73,8 +73,8 @@ public class MainLg extends JavaPlugin{
 	public void onEnable() {
 		instance = this;
 		loadRoles();
+		final FileConfiguration config = this.getConfig();
 		if(!new File(getDataFolder(), "config.yml").exists()) {//Créer la config
-			FileConfiguration config = getConfig();
 			config.set("spawns", new ArrayList<List<Double>>());
 			for(String role : rolesBuilder.keySet())//Nombre de participant pour chaque rôle
 				config.set("role."+role, 1);
@@ -91,6 +91,7 @@ public class MainLg extends JavaPlugin{
 		}
 		Bukkit.getConsoleSender().sendMessage("/");
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(rolesBuilder), this);
 		Bukkit.getPluginManager().registerEvents(new CancelListener(), this);
 		Bukkit.getPluginManager().registerEvents(new VoteListener(), this);
 		Bukkit.getPluginManager().registerEvents(new ChatListener(), this);

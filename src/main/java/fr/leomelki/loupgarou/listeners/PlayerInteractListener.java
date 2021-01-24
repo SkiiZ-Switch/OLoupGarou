@@ -31,7 +31,6 @@ public class PlayerInteractListener implements Listener {
     public void onInteract(PlayerInteractEvent e) {
         int index = 0;
         ItemStack item = e.getItem();
-
         if (item == null)
             return;
 
@@ -65,7 +64,8 @@ public class PlayerInteractListener implements Listener {
             } else if (e.isLeftClick()) {
                 for (String role : getRoles().keySet()) {
                     if (role.equals(e.getCurrentItem().getItemMeta().getDisplayName())) {
-                        n = MainLg.getInstance().getConfig().getInt("distributionFixed." + role);
+                        n = MainLg.getInstance().getConfig().getInt("role." + role);
+                        Bukkit.getLogger().info("role." + n);
                         Bukkit.dispatchCommand(p, "lg roles set " + index + " " + (n + 1));
                         return;
                     }
@@ -74,7 +74,7 @@ public class PlayerInteractListener implements Listener {
             } else if (e.isRightClick()) {
                 for (String role : getRoles().keySet()) {
                     if (role.equals(e.getCurrentItem().getItemMeta().getDisplayName())) {
-                        n = MainLg.getInstance().getConfig().getInt("distributionFixed." + role);
+                        n = MainLg.getInstance().getConfig().getInt("role." + role);
                         if (n > 0)
                             Bukkit.dispatchCommand(p, "lg roles set " + index + " " + (n - 1));
                         return;
