@@ -713,7 +713,7 @@ public class LGGame implements Listener {
 				LGPlayer.thePlayer(lgp.getPlayer()).join(MainLg.getInstance().getCurrentGame());
 				if (lgp.getPlayer().hasPermission("loupgarou.admin")) {
 					lgp.getPlayer().getInventory().setItem(1,
-							new ItemBuilder(Material.ENDER_EYE).setName("Choisir les rôles").build());
+							new ItemBuilder(Material.CLAY).setName("Choisir les rôles").build());
 					lgp.getPlayer().getInventory().setItem(3,
 							new ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
 				}

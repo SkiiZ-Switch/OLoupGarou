@@ -48,7 +48,7 @@ public class JoinListener implements Listener{
 			}
 		p.setFoodLevel(6);
 		if(e.getJoinMessage() == null || !e.getJoinMessage().equals("joinall"))
-			p.getPlayer().setResourcePack("http://leomelki.fr/mcgames/ressourcepacks/v32/loup_garou.zip");
+			p.getPlayer().setResourcePack("http://radio-zone.fr/mc/loup_garou.zip");
 		else {
 			LGPlayer lgp = LGPlayer.thePlayer(e.getPlayer());
 			lgp.showView();
@@ -69,7 +69,7 @@ public class JoinListener implements Listener{
 			lgp.showView();
 			lgp.join(MainLg.getInstance().getCurrentGame());
 			if(p.hasPermission("loupgarou.admin")){
-				p.getInventory().setItem(1,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.ENDER_EYE).setName("Choisir les rôles").build());
+				p.getInventory().setItem(1,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.BRICK).setName("Choisir les rôles").build());
 				p.getInventory().setItem(3,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
 			}
 		} 

@@ -34,7 +34,7 @@ public class PlayerInteractListener implements Listener {
         if (item == null)
             return;
 
-        if (item.getType().equals(Material.ENDER_EYE)) {
+        if (item.getType().equals(Material.BRICK)) {
             Player p = e.getPlayer();
 
             Inventory gui = Bukkit.createInventory(null, 4 * 9, "Rôles");
@@ -50,6 +50,11 @@ public class PlayerInteractListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
+        ItemStack item = e.getCurrentItem();
+        if (item == null)
+        {
+            return;
+        }
         if (e.getView().getTitle().equals("Rôles")) {
             int index = 0;
             Integer n = null;
@@ -60,12 +65,12 @@ public class PlayerInteractListener implements Listener {
                 for (Player pl : Bukkit.getOnlinePlayers())
                     Bukkit.getPluginManager().callEvent(new PlayerJoinEvent(pl, "joinall"));
                 p.getInventory().setItem(3, new ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
-                p.getInventory().setItem(1, new ItemBuilder(Material.ENDER_EYE).setName("Choisir les rôles").build());
+                p.getInventory().setItem(1, new ItemBuilder(Material.BRICK).setName("Choisir les rôles").build());
             } else if (e.isLeftClick()) {
                 for (String role : getRoles().keySet()) {
                     if (role.equals(e.getCurrentItem().getItemMeta().getDisplayName())) {
                         n = MainLg.getInstance().getConfig().getInt("role." + role);
-                        Bukkit.getLogger().info("role." + n);
+                        // Bukkit.getLogger().info("role." + n);
                         Bukkit.dispatchCommand(p, "lg roles set " + index + " " + (n + 1));
                         return;
                     }

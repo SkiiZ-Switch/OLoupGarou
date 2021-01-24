@@ -25,6 +25,9 @@ hs_err_pid*
 # Minecraft data
 /minecraft_data
 
+#Ressource pack folder
+ressourcepack/loup_garou
+
 # Editor configs
 .settings
 .vscode
