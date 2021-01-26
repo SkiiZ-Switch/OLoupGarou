@@ -34,7 +34,7 @@ public class PlayerInteractListener implements Listener {
         if (item == null)
             return;
 
-        if (item.getType().equals(Material.BRICK)) {
+        if (item.getType().equals(Material.SEA_PICKLE)) {
             Player p = e.getPlayer();
 
             Inventory gui = Bukkit.createInventory(null, 4 * 9, "Rôles");
@@ -65,7 +65,7 @@ public class PlayerInteractListener implements Listener {
                 for (Player pl : Bukkit.getOnlinePlayers())
                     Bukkit.getPluginManager().callEvent(new PlayerJoinEvent(pl, "joinall"));
                 p.getInventory().setItem(3, new ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
-                p.getInventory().setItem(1, new ItemBuilder(Material.BRICK).setName("Choisir les rôles").build());
+                p.getInventory().setItem(1, new ItemBuilder(Material.SEA_PICKLE).setName("Choisir les rôles").build());
             } else if (e.isLeftClick()) {
                 for (String role : getRoles().keySet()) {
                     if (role.equals(e.getCurrentItem().getItemMeta().getDisplayName())) {

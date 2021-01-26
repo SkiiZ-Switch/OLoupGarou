@@ -36,7 +36,7 @@ class ParserGame extends ParserAbstract {
       Bukkit.getPluginManager().callEvent(new PlayerJoinEvent(p, "joinall"));
       if (p.getPlayer().hasPermission("loupgarou.admin")) {
         p.getPlayer().getInventory().setItem(1,
-            new ItemBuilder(Material.BRICK).setName("Choisir les rôles").build());
+            new ItemBuilder(Material.SEA_PICKLE).setName("Choisir les rôles").build());
         p.getPlayer().getInventory().setItem(3, new ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
       }
     }

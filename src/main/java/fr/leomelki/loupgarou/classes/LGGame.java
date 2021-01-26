@@ -577,10 +577,7 @@ public class LGGame implements Listener {
 			if (vote != null)
 				vote.remove(killed);
 
-			final String deathLog = String.format(reason.getMessage(), killed.getFullName()) + ", il était "
-					+ killed.getRole().getName() + (killed.isInfected() ? " §c§l(Infecté)" : "")
-					+ (killed.isVampire() ? " §5§l(Vampire)" : "") + "§4.";
-
+			final String deathLog = String.format(reason.getMessage(), killed.getFullName()) + ", il était " + killed.getRole().getName() + (killed.isInfected() ? " §c§l(Infecté)" : "") + (killed.isVampire() ? " §5§l(Vampire)" : "") + "§4.";
 			broadcastMessage(deathLog);
 			System.out.println(deathLog.replaceAll("\\§.", ""));
 
@@ -713,7 +710,7 @@ public class LGGame implements Listener {
 				LGPlayer.thePlayer(lgp.getPlayer()).join(MainLg.getInstance().getCurrentGame());
 				if (lgp.getPlayer().hasPermission("loupgarou.admin")) {
 					lgp.getPlayer().getInventory().setItem(1,
-							new ItemBuilder(Material.CLAY).setName("Choisir les rôles").build());
+							new ItemBuilder(Material.SEA_PICKLE).setName("Choisir les rôles").build());
 					lgp.getPlayer().getInventory().setItem(3,
 							new ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
 				}

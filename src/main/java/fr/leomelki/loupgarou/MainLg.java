@@ -65,7 +65,7 @@ public class MainLg extends JavaPlugin{
 	@Getter private static String prefix = ""/*"§7[§9Loup-Garou§7] "*/;
 	@Getter @Setter private LGGame currentGame;//Because for now, only one game will be playable on one server (flemme)
 	public static FileConfiguration nicksFile;
-	private List<String> startingMemes;
+	private List<String> startingMemes = new ArrayList<String>();
 	public static final String DISTRIBUTION_FIXED_KEY = "distributionFixed.";
 	public static final String DISTRIBUTION_RANDOM_KEY = "distributionRandom.";
 	
@@ -409,6 +409,7 @@ public class MainLg extends JavaPlugin{
 			rolesBuilder.put("Villageois", RVillageois.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Medium", RMedium.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Dictateur", RDictateur.class.getConstructor(LGGame.class));
+			rolesBuilder.put("Pronostiqueur", RPronostiqueur.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Cupidon", RCupidon.class.getConstructor(LGGame.class));
 			rolesBuilder.put("PetiteFille", RPetiteFille.class.getConstructor(LGGame.class));
 			rolesBuilder.put("ChaperonRouge", RChaperonRouge.class.getConstructor(LGGame.class));

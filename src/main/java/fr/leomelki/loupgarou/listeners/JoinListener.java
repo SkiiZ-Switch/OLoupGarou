@@ -69,7 +69,7 @@ public class JoinListener implements Listener{
 			lgp.showView();
 			lgp.join(MainLg.getInstance().getCurrentGame());
 			if(p.hasPermission("loupgarou.admin")){
-				p.getInventory().setItem(1,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.BRICK).setName("Choisir les rôles").build());
+				p.getInventory().setItem(1,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.SEA_PICKLE).setName("Choisir les rôles").build());
 				p.getInventory().setItem(3,new fr.leomelki.loupgarou.utils.ItemBuilder(Material.EMERALD).setName("Lancer la partie").build());
 			}
 		} 

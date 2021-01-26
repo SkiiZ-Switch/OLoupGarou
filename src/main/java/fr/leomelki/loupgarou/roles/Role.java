@@ -30,7 +30,7 @@ public abstract class Role implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, MainLg.getInstance());
 
 		FileConfiguration config = MainLg.getInstance().getConfig();
-		String roleConfigName = "distributionFixed." + getClass().getSimpleName().substring(1);
+		String roleConfigName = "role." + getClass().getSimpleName().substring(1);
 
 		if (config.contains(roleConfigName)) {
 			waitedPlayers = config.getInt(roleConfigName);

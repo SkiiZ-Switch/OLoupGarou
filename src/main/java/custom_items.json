@@ -349,6 +349,20 @@
     "mort_vampire-infecte": "RED_GLAZED_TERRACOTTA",
     "vampire-infecte": "SPRUCE_SIGN"
   },
+  "Pronostiqueur": {
+    "": "LIME_CARPET",
+    "infecte": "BLUE_CARPET",
+    "infecte_maire": "BROWN_CARPET",
+    "infecte_maire_mort": "RED_CARPET",
+    "infecte_mort": "BLACK_CARPET",
+    "maire": "WHITE_CARPET",
+    "maire_mort": "STONE_PRESSURE_PLATE",
+    "maire_mort_vampire-infecte": "OAK_PRESSURE_PLATE",
+    "maire_vampire-infecte": "SPRUCE_PRESSURE_PLATE",
+    "mort": "JUNGLE_PRESSURE_PLATE",
+    "mort_vampire-infecte": "ACACIA_PRESSURE_PLATE",
+    "vampire-infecte": "SNOW"
+  },
   "Pyromane": {
     "": "RED_WOOL",
     "infecte": "INFESTED_COBBLESTONE",
