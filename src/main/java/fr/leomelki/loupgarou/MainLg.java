@@ -409,6 +409,7 @@ public class MainLg extends JavaPlugin{
 			rolesBuilder.put("Villageois", RVillageois.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Medium", RMedium.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Dictateur", RDictateur.class.getConstructor(LGGame.class));
+			rolesBuilder.put("Mentaliste", RMentaliste.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Pronostiqueur", RPronostiqueur.class.getConstructor(LGGame.class));
 			rolesBuilder.put("Cupidon", RCupidon.class.getConstructor(LGGame.class));
 			rolesBuilder.put("PetiteFille", RPetiteFille.class.getConstructor(LGGame.class));

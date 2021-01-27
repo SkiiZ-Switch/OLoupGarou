@@ -293,6 +293,20 @@
     "mort_vampire-infecte": "CYAN_CARPET",
     "vampire-infecte": "COAL"
   },
+  "Mentaliste": {
+    "": "KELP",
+    "infecte": "NETHER_QUARTZ_ORE",
+    "infecte_maire": "BRICK",
+    "infecte_maire_mort": "GLOWSTONE_DUST",
+    "infecte_mort": "PAPER",
+    "maire": "FIRE_CHARGE",
+    "maire_mort": "PINK_DYE",
+    "maire_mort_vampire-infecte": "BONE",
+    "maire_vampire-infecte": "ORANGE_DYE",
+    "mort": "PUMPKIN_SEEDS",
+    "mort_vampire-infecte": "MELON_SEEDS",
+    "vampire-infecte": "NETHER_WART"
+  },
   "MontreurDOurs": {
     "": "BLUE_DYE",
     "infecte": "BLUE_STAINED_GLASS",

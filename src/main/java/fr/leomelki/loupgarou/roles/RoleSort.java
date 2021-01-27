@@ -5,6 +5,7 @@ public enum RoleSort {
 	ChienLoup,
 	EnfantSauvage,
 	Cupidon,
+	Mentaliste,
 	Garde,
 	Survivant,
 	Voyante,
