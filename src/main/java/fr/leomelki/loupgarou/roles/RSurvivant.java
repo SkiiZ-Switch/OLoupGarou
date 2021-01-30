@@ -91,9 +91,9 @@ public class RSurvivant extends Role {
 		inMenu = true;
 		Inventory inventory = Bukkit.createInventory(null, 9, "§7Veux-tu te protéger ?");
 		ItemStack[] items = new ItemStack[9];
-		VariableCache cache = LGPlayer.thePlayer(player).getCache();
+		LGPlayer lgp = LGPlayer.thePlayer(player);
 
-		if (Integer.parseInt(cache.get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) > 0) {
+		if (Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) > 0) {
 			items[3] = new ItemStack(Material.IRON_NUGGET);
 			ItemMeta meta = items[3].getItemMeta();
 			meta.setDisplayName("§7§lNe rien faire");
@@ -102,7 +102,7 @@ public class RSurvivant extends Role {
 			items[5] = new ItemStack(Material.GOLD_NUGGET);
 			meta = items[5].getItemMeta();
 			meta.setDisplayName(
-					"§2§lSe protéger (§6§l" + Integer.parseInt(cache.get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) + "§2§l restant)");
+					"§2§lSe protéger (§6§l" + Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) + "§2§l restant)");
 			meta.setLore(Arrays.asList("§8Tu ne pourras pas être tué par", "§8  les §c§lLoups§8 cette nuit."));
 			items[5].setItemMeta(meta);
 		} else {
