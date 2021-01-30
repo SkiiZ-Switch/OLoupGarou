@@ -36,7 +36,7 @@ import fr.leomelki.loupgarou.events.LGPlayerKilledEvent.Reason;
 import fr.leomelki.loupgarou.events.LGUpdatePrefixEvent;
 
 public class RCupidon extends Role {
-	private static final String CUPIDON_FIRST = "cupidon_first";
+	private static final String CUPIDON_FIRST = "choosen";
 	private static final String IN_LOVE = "in_love";
 
 	WrappedDataWatcherObject invisible = new WrappedDataWatcherObject(0, WrappedDataWatcher.Registry.get(Byte.class));
@@ -111,7 +111,7 @@ public class RCupidon extends Role {
 			@Override
 			public void callback(LGPlayer choosen) {
 				if (choosen != null) {
-					if (player.hasProperty(RCupidon.CUPIDON_FIRST)) {
+					if (player.getCache().has(RCupidon.CUPIDON_FIRST)) {
 						LGPlayer first = player.getCache().remove(RCupidon.CUPIDON_FIRST);
 						if (first == choosen) {
 							int entityId = Integer.MAX_VALUE - choosen.getPlayer().getEntityId();
