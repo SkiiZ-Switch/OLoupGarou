@@ -60,6 +60,18 @@ public class RMentaliste extends Role {
 
 	@Override
 	protected void onNightTurn(LGPlayer player, Runnable callback) {
+		if (player.getCache().has(RMentaliste.IN_CONNECTION))
+		{
+			player.getCache().remove(RMentaliste.IN_CONNECTION);
+		}
+		for (LGPlayer lgp : getGame().getInGame())
+		{
+			if (lgp.getCache().has(RMentaliste.IN_CONNECTION)) 
+			{
+				lgp.getCache().remove(RMentaliste.IN_CONNECTION);
+			}
+		}
+
 		player.showView();
 		player.choose(new LGChooseCallback() {
 			@Override
@@ -91,8 +103,8 @@ public class RMentaliste extends Role {
 		if (player.getGame() == getGame()) {
 			if (e.getMessage().startsWith("@")) {
 				if (player.getCache().has(RMentaliste.IN_CONNECTION)) {
-					player.sendMessage("§d\u2764 " + player.getFullName() + " §6» §f" + e.getMessage().substring(1));
-					player.getCache().<LGPlayer>get(RMentaliste.IN_CONNECTION).sendMessage("§d\u2764 " + player.getFullName() + " §6» §f" + e.getMessage().substring(1));
+					player.sendMessage("§n§2≈ " + player.getFullName() + " §6» §f" + e.getMessage().substring(1));
+					player.getCache().<LGPlayer>get(RMentaliste.IN_CONNECTION).sendMessage("§n§2≈ " + player.getFullName() + " §6» §f" + e.getMessage().substring(1));
 				} else {
 					player.sendMessage("§4Erreur : §cVous n'êtes pas connecté !");
 				}
