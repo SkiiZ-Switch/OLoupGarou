@@ -197,7 +197,7 @@ public class RVampire extends Role {
 	public void onDayStart(LGNightEndEvent e) {
 		if (e.getGame() == getGame())
 			for (LGPlayer player : getGame().getAlive()) {
-				if (player.getCache().getBoolean(RVampire.INFECTED_BY_VAMPIRE_THIS_NIGHT)) {
+				if (player.getCache().has(RVampire.INFECTED_BY_VAMPIRE_THIS_NIGHT)) {
 					player.getCache().remove(RVampire.INFECTED_BY_VAMPIRE_THIS_NIGHT);
 					for (LGPlayer lgp : getGame().getInGame()) {
 						if (lgp.getRoleType() == RoleType.VAMPIRE)
@@ -228,7 +228,7 @@ public class RVampire extends Role {
 
 	@EventHandler
 	public void onCustomItemChange(LGCustomItemChangeEvent e) {
-		if (e.getGame() == getGame() && e.getPlayer().getCache().getBoolean(RVampire.INFECTED_BY_VAMPIRE))
+		if (e.getGame() == getGame() && e.getPlayer().getCache().has(RVampire.INFECTED_BY_VAMPIRE))
 			e.getConstraints().add(LGCustomItemsConstraints.VAMPIRE_INFECTE.getName());
 	}
 }

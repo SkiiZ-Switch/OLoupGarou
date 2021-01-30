@@ -119,7 +119,7 @@ public class RGarde extends Role {
 	@EventHandler
 	public void onPlayerKill(LGNightPlayerPreKilledEvent e) {
 		if (e.getGame() == getGame() && reasonsProtected.contains(e.getReason())
-				&& e.getKilled().getCache().getBoolean(RGarde.IS_PROTECTED_BY_GUARD)) {
+				&& e.getKilled().getCache().has(RGarde.IS_PROTECTED_BY_GUARD)) {
 			e.getKilled().getCache().remove(RGarde.IS_PROTECTED_BY_GUARD);
 			e.setReason(Reason.DONT_DIE);
 		}
@@ -127,7 +127,7 @@ public class RGarde extends Role {
 
 	@EventHandler
 	public void onVampired(LGVampiredEvent e) {
-		if (e.getGame() == getGame() && e.getPlayer().getCache().getBoolean(RGarde.IS_PROTECTED_BY_GUARD))
+		if (e.getGame() == getGame() && e.getPlayer().getCache().has(RGarde.IS_PROTECTED_BY_GUARD))
 			e.setProtect(true);
 	}
 

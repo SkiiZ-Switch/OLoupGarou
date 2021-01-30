@@ -75,14 +75,14 @@ public class RPetiteFille extends Role {
 					if (role instanceof RLoupGarou) {
 						RLoupGarou lgRole = (RLoupGarou) role;
 						for (LGPlayer player : getPlayers())
-							if (!player.getCache().getBoolean(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF) && player.isRoleActive())
+							if (!player.getCache().has(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF) && player.isRoleActive())
 								player.joinChat(lgRole.getChat(), (sender, message) -> "§c"
 										+ customNames.get(lgRole.getPlayers().indexOf(sender)) + " §6» §f" + message, true);
 						break;
 					}
 			if (e.getPreviousRole() instanceof RLoupGarou)
 				for (LGPlayer player : getPlayers())
-					if (!player.getCache().getBoolean(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF) && player.isRoleActive())
+					if (!player.getCache().has(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF) && player.isRoleActive())
 						player.leaveChat();
 		}
 	}

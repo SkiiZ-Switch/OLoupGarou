@@ -26,7 +26,7 @@ import fr.leomelki.loupgarou.events.LGVampiredEvent;
 import fr.leomelki.loupgarou.utils.VariableCache;
 
 public class RSurvivant extends Role {
-	protected static final String AMOUNT_OF_PROTECTIONS_REMAINING = "survivor_amount_of_protections_remaining";
+	protected static final String AMOUNT_OF_PROTECTIONS_REMAINING = "2";
 	private static final String IMMUNITY_FROM_WOLVES = "immunity_from_wolves_survivor";
 
 	public RSurvivant(LGGame game) {
@@ -176,14 +176,14 @@ public class RSurvivant extends Role {
 		if (e.getGame() == getGame()
 				&& (e.getReason() == Reason.LOUP_GAROU || e.getReason() == Reason.LOUP_BLANC
 						|| e.getReason() == Reason.GM_LOUP_GAROU || e.getReason() == Reason.ASSASSIN)
-				&& e.getKilled().getCache().getBoolean(RSurvivant.IMMUNITY_FROM_WOLVES) && e.getKilled().isRoleActive()) {
+				&& e.getKilled().getCache().has(RSurvivant.IMMUNITY_FROM_WOLVES) && e.getKilled().isRoleActive()) {
 			e.setReason(Reason.DONT_DIE);
 		}
 	}
 
 	@EventHandler
 	public void onVampired(LGVampiredEvent e) {
-		if (e.getGame() == getGame() && e.getPlayer().getCache().getBoolean(RSurvivant.IMMUNITY_FROM_WOLVES))
+		if (e.getGame() == getGame() && e.getPlayer().getCache().has(RSurvivant.IMMUNITY_FROM_WOLVES))
 			e.setProtect(true);
 	}
 

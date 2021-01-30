@@ -77,9 +77,9 @@ public class RFaucheur extends Role {
 	public void onKill(LGPlayerKilledEvent e) {
 		if (e.getKilled().getRole() == this && e.getKilled().isRoleActive()) {
 			LGPlayer killed = e.getKilled();
-			if (killed.getCache().getBoolean(RFaucheur.EXTERMINATED_HIS_NEIGHBORS))// A déjà fait son coup de faucheur !
+			if (killed.getCache().has(RFaucheur.EXTERMINATED_HIS_NEIGHBORS))// A déjà fait son coup de faucheur !
 				return;
-			killed.getCache().set(RFaucheur.EXTERMINATED_HIS_NEIGHBORS, true);
+			killed.getCache().set(RFaucheur.EXTERMINATED_HIS_NEIGHBORS, "true");
 			if (e.getReason() == Reason.LOUP_GAROU || e.getReason() == Reason.GM_LOUP_GAROU) {// car le switch buggait (wtf)
 				// Mort par les LG
 				// Tue un lg au hasard

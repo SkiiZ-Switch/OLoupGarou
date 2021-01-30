@@ -134,7 +134,7 @@ public class RSorciere extends Role {
 				sauver == null ? "§7Personne n'a été ciblé" : "§7§l" + sauver.getFullName() + " §7est ciblé");
 		inventory.setContents(items.clone());// clone au cas où Bukkit prenne directement la liste pour éviter de la
 																					// modifier avec setItem (jsp)
-		if (sauver == null || player.getCache().getBoolean(RSorciere.WICH_USED_LIFE_POTION))
+		if (sauver == null || player.getCache().has(RSorciere.WICH_USED_LIFE_POTION))
 			inventory.setItem(0, null);
 
 		if (sauver != null) {
@@ -144,7 +144,7 @@ public class RSorciere extends Role {
 			head.setItemMeta(meta);
 			inventory.setItem(4, head);
 		}
-		if (player.getCache().getBoolean(RSorciere.WICH_USED_DEATH_POTION))
+		if (player.getCache().has(RSorciere.WICH_USED_DEATH_POTION))
 			inventory.setItem(2, null);
 		player.getPlayer().closeInventory();
 		player.getPlayer().openInventory(inventory);

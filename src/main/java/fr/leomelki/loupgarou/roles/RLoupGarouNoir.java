@@ -184,7 +184,7 @@ public class RLoupGarouNoir extends Role {
 	public void onDayStart(LGNightEndEvent e) {
 		if (e.getGame() == getGame())
 			for (LGPlayer player : getGame().getAlive()) {
-				if (player.getCache().getBoolean(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF_THIS_NIGHT)) {
+				if (player.getCache().has(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF_THIS_NIGHT)) {
 					player.getCache().remove(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF_THIS_NIGHT);
 					player.sendMessage("§6Tu as été infecté pendant la nuit.");
 					player.sendMessage("§6§oTu gagnes désormais avec les §c§l§oLoups-Garous§6§o.");
@@ -233,7 +233,7 @@ public class RLoupGarouNoir extends Role {
 
 	@EventHandler
 	public void onCustomItemChange(LGCustomItemChangeEvent e) {
-		if (e.getGame() == getGame() && e.getPlayer().getCache().getBoolean(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF))
+		if (e.getGame() == getGame() && e.getPlayer().getCache().has(RLoupGarouNoir.INFECTED_BY_BLACK_WOLF))
 			e.getConstraints().add(LGCustomItemsConstraints.INFECTED.getName());
 	}
 
