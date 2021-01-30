@@ -92,7 +92,8 @@ public class RSurvivant extends Role {
 		Inventory inventory = Bukkit.createInventory(null, 9, "§7Veux-tu te protéger ?");
 		ItemStack[] items = new ItemStack[9];
 		VariableCache cache = LGPlayer.thePlayer(player).getCache();
-		if (cache.<Integer>get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) > 0) {
+
+		if (Integer.parseInt(cache.get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) > 0) {
 			items[3] = new ItemStack(Material.IRON_NUGGET);
 			ItemMeta meta = items[3].getItemMeta();
 			meta.setDisplayName("§7§lNe rien faire");
@@ -101,7 +102,7 @@ public class RSurvivant extends Role {
 			items[5] = new ItemStack(Material.GOLD_NUGGET);
 			meta = items[5].getItemMeta();
 			meta.setDisplayName(
-					"§2§lSe protéger (§6§l" + cache.<Integer>get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) + "§2§l restant)");
+					"§2§lSe protéger (§6§l" + Integer.parseInt(cache.get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) + "§2§l restant)");
 			meta.setLore(Arrays.asList("§8Tu ne pourras pas être tué par", "§8  les §c§lLoups§8 cette nuit."));
 			items[5].setItemMeta(meta);
 		} else {
@@ -119,7 +120,7 @@ public class RSurvivant extends Role {
 	@Override
 	public void join(LGPlayer player) {
 		super.join(player);
-		player.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING, 2);
+		player.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING, "2");
 	}
 
 	Runnable callback;
@@ -164,7 +165,7 @@ public class RSurvivant extends Role {
 			lgp.sendActionBarMessage("§9§lTu as décidé de te protéger.");
 			lgp.sendMessage("§6Tu as décidé de te protéger.");
 			lgp.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING,
-					lgp.getCache().<Integer>get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) - 1);
+					Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) - 1);
 			lgp.getCache().set(RSurvivant.IMMUNITY_FROM_WOLVES, true);
 			lgp.hideView();
 			callback.run();
