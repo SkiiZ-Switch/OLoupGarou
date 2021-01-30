@@ -50,7 +50,7 @@ public class RMentaliste extends Role {
 
 	@Override
 	public String getTask() {
-		return "Choisir un joueur avec lequel vous souhaitez communiquer (@message)";
+		return "Choisir un joueur avec lequel vous souhaitez communiquer AVEC §l(@message)";
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class RMentaliste extends Role {
 			@Override
 			public void callback(LGPlayer choosen) {
 				if (choosen != null && choosen != player) {
-					player.sendMessage("§6La connexion avec §7§l" + choosen.getFullName() + "établi GG.");
+					setInConnection(player,choosen);
 					player.stopChoosing();
 					player.hideView();
 					callback.run();
