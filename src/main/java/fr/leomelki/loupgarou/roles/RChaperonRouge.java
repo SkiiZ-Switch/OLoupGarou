@@ -87,14 +87,14 @@ public class RChaperonRouge extends Role {
 		if (e.getGame() == getGame()) {
 			if (e.getPreviousRole() instanceof RLoupGarou) {
 				for (LGPlayer lgp : getGame().getAlive())
-					if (lgp.hasProperty(RChaperonRouge.immunityFromWolves) && lgp.isRoleActive()) {
+					if (lgp.getCache().has(RChaperonRouge.immunityFromWolves) && lgp.isRoleActive()) {
 						for (LGPlayer l : getGame().getInGame())
 							if (l.getRoleType() == RoleType.LOUP_GAROU)
 								l.sendMessage(Role.IS_IMMUNE_FROM_WOLVES);
 					}
 			} else if (e.getPreviousRole() instanceof RGrandMechantLoup) {
 				for (LGPlayer lgp : getGame().getAlive())
-					if (lgp.hasProperty(RChaperonRouge.immunityFromWolves) && lgp.isRoleActive()) {
+					if (lgp.getCache().has(RChaperonRouge.immunityFromWolves) && lgp.isRoleActive()) {
 						for (LGPlayer l : e.getPreviousRole().getPlayers())
 							l.sendMessage(Role.IS_IMMUNE_FROM_WOLVES);
 					}
@@ -106,8 +106,8 @@ public class RChaperonRouge extends Role {
 	public void onDayStart(LGNightEndEvent e) {
 		if (e.getGame() == getGame()) {
 			for (LGPlayer lgp : getPlayers())
-				if (lgp.hasProperty(RChaperonRouge.immunityFromWolves)) {
-					lgp.removeProperty(RChaperonRouge.immunityFromWolves);
+				if (lgp.getCache().has(RChaperonRouge.immunityFromWolves)) {
+					lgp.getCache().remove(RChaperonRouge.immunityFromWolves);
 					lgp.sendMessage("§9§oTu as été attaqué cette nuit.");
 				}
 		}

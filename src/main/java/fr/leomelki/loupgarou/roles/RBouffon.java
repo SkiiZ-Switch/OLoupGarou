@@ -155,7 +155,7 @@ public class RBouffon extends Role {
 	public void onWin(LGGameEndEvent e) {
 		if (e.getGame() == getGame())
 			for (LGPlayer lgp : getGame().getInGame())
-				if (lgp.getRole() == this && lgp.hasProperty(RBouffon.VICTORY_AS_BUFFOON)) {
+				if (lgp.getRole() == this && lgp.getCache().has(RBouffon.VICTORY_AS_BUFFOON)) {
 					e.getWinners().add(lgp);
 					new BukkitRunnable() {
 

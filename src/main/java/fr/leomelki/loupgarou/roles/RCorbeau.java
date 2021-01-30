@@ -99,8 +99,8 @@ public class RCorbeau extends Role {
 	public void onVoteStart(LGVoteEvent e) {
 		if (e.getGame() == getGame())
 			for (LGPlayer lgp : getGame().getAlive())
-				if (lgp.hasProperty(RCorbeau.CHOSEN_BY_RAVEN)) {
-					lgp.removeProperty(RCorbeau.CHOSEN_BY_RAVEN);
+				if (lgp.getCache().has(RCorbeau.CHOSEN_BY_RAVEN)) {
+					lgp.getCache().remove(RCorbeau.CHOSEN_BY_RAVEN);
 					LGPlayer lg = lgp;
 					new BukkitRunnable() {
 

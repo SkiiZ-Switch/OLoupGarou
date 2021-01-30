@@ -202,7 +202,7 @@ public class RDictateur extends Role {
 
 	public void onTurn(Cancellable e) {
 		for (LGPlayer lgp : getPlayers())
-			if (lgp.hasProperty(RDictateur.DICTATOR_OVERTHROW) && lgp.isRoleActive())
+			if (lgp.getCache().has(RDictateur.DICTATOR_OVERTHROW) && lgp.isRoleActive())
 				e.setCancelled(true);
 
 		if (!e.isCancelled())
@@ -214,9 +214,9 @@ public class RDictateur extends Role {
 				run = this;
 				if (ite.hasNext()) {
 					LGPlayer lgp = ite.next();
-					if (lgp.hasProperty(RDictateur.DICTATOR_OVERTHROW)) {
+					if (lgp.getCache().has(RDictateur.DICTATOR_OVERTHROW)) {
 						getPlayers().remove(lgp);
-						lgp.removeProperty(RDictateur.DICTATOR_OVERTHROW);
+						lgp.getCache().remove(RDictateur.DICTATOR_OVERTHROW);
 						getGame().broadcastMessage("§7§l" + lgp.getFullName() + " §9réalise un coup d'état.");
 
 						// On le met sur le slot 0 pour éviter un missclick sur la croix
