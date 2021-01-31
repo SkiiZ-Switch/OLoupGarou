@@ -92,8 +92,7 @@ public class RSurvivant extends Role {
 		Inventory inventory = Bukkit.createInventory(null, 9, "§7Veux-tu te protéger ?");
 		ItemStack[] items = new ItemStack[9];
 		LGPlayer lgp = LGPlayer.thePlayer(player);
-
-		if (Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) > 0) {
+		if (lgp.getCache().has(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) && lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) != "0") {
 			items[3] = new ItemStack(Material.IRON_NUGGET);
 			ItemMeta meta = items[3].getItemMeta();
 			meta.setDisplayName("§7§lNe rien faire");
@@ -102,7 +101,7 @@ public class RSurvivant extends Role {
 			items[5] = new ItemStack(Material.GOLD_NUGGET);
 			meta = items[5].getItemMeta();
 			meta.setDisplayName(
-					"§2§lSe protéger (§6§l" + Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) + "§2§l restant)");
+					"§2§lSe protéger (§6§l" + lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING) + "§2§l restant)");
 			meta.setLore(Arrays.asList("§8Tu ne pourras pas être tué par", "§8  les §c§lLoups§8 cette nuit."));
 			items[5].setItemMeta(meta);
 		} else {
@@ -118,8 +117,8 @@ public class RSurvivant extends Role {
 	}
 
 	@Override
-	public void join(LGPlayer player) {
-		super.join(player);
+	public void join(LGPlayer player,boolean sendMessage) {
+		super.join(player,sendMessage);
 		player.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING, "2");
 	}
 
@@ -164,8 +163,16 @@ public class RSurvivant extends Role {
 			closeInventory(player);
 			lgp.sendActionBarMessage("§9§lTu as décidé de te protéger.");
 			lgp.sendMessage("§6Tu as décidé de te protéger.");
-			lgp.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING,
-					Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) - 1);
+			Integer AOPR = Integer.parseInt(lgp.getCache().get(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING)) - 1;
+			if(AOPR == 0)
+			{
+				lgp.getCache().remove(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING);
+			} 
+			else
+			{
+				lgp.getCache().set(RSurvivant.AMOUNT_OF_PROTECTIONS_REMAINING,String.valueOf(AOPR));
+			}
+			
 			lgp.getCache().set(RSurvivant.IMMUNITY_FROM_WOLVES, true);
 			lgp.hideView();
 			callback.run();
